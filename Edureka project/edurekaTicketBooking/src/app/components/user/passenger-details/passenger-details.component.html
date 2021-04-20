@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="card passengerForm">
+    <div class="card-header text-center">Enter Your Details</div>
+    <div class="card-body">
+      <form [formGroup]="startForm" (ngSubmit)="onFormSubmit()">
+        <div class="form-row row">
+          <div class="form-group col-lg-6">
+            <label>Name</label>
+
+            <input type="text" class="form-control" formControlName="name" />
+            <div
+              *ngIf="submitted && f.name.errors && f.name.errors.required"
+              class="text-danger"
+            >
+              Name is required
+            </div>
+          </div>
+          <div class="form-group col-lg-6">
+            <label>Mobile Number</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="phoneNumber"
+            />
+            <div
+              *ngIf="
+                submitted &&
+                f.phoneNumber.errors &&
+                f.phoneNumber.errors.required
+              "
+              class="text-danger"
+            >
+              Phone number is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row row">
+          <div class="form-group col-12">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email" />
+            <div
+              *ngIf="submitted && f.email.errors && f.email.errors.required"
+              class="text-danger"
+            >
+              Email is required
+            </div>
+            <div
+              *ngIf="submitted && f.email.errors && f.email.errors.email"
+              class="text-danger"
+            >
+              Incorrect Email format!
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="text-center">
+          <button class="btn btn-primary m-2" (click)="onFormSubmit()">
+            Submit
+          </button>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col lg-6 card" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">Journey Details</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ tripDetails.source | titlecase }} to
+              {{ tripDetails.destination | titlecase }}
+            </h6>
+            <p class="card-text">
+              Departure Time: {{ tripDetails.departureTime }}
+              <br />
+              You are travelling in,
+              <strong>{{ tripDetails.busName | titlecase }}</strong> , in coach
+              type <strong>{{ tripDetails.coachType | titlecase }}</strong> !
+              <br />
+              Seats Booked:(
+              <span *ngFor="let seat of bookingDeatils.seatsBooked"
+                >{{ seat }},
+              </span>
+              )
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

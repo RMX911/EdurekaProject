@@ -1,0 +1,33 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Avilable Buses</h1>
+    <p class="lead">Booking buses at the tip of your finger</p>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Bus Name</th>
+      <th>Dept. Time</th>
+      <th>Coach Type</th>
+      <th>Seats Avilable</th>
+      <th>Fare</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let busDetail of busDetails; let i = index">
+      <td>{{ busDetail.busName | titlecase }}</td>
+      <td>{{ busDetail.departureTime }}</td>
+      <td>{{ busDetail.coachType | titlecase }}</td>
+      <td>{{ busDetail.seatsAvailable }}</td>
+      <td>{{ busDetail.fare | currency: "INR" }}</td>
+      <td>
+        <button (click)="showDetails($event, i)" class="btn btn-danger">
+          view
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

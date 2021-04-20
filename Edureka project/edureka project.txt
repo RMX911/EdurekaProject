@@ -1,0 +1,71 @@
+
+
+Bus Ticketing website:
+
+(1) Home page
+    -> Header
+    -> content
+        -> search buses for diff routes
+            -> reactive form
+    -> footer
+(2) Search details page
+    -> Header
+    -> list of all the buses that came up in your search
+        -> use bootstrap table class
+    -> footer
+(3) seat selection page
+    -> Header
+    -> seat selection view
+        -> use bootstrap table class
+        -> use checkboxes to denote seats, if possible research on CSS to seat like box with checkbox control
+        -> fare and confirm button
+        -> two way data binding
+    -> footer
+(4) passenger information page
+    -> Header
+    -> passenger information
+        -> reactive forms
+    -> footer
+(5) review bus ticket page
+    -> Header
+    -> review bus ticket
+        -> use card from bootstrap
+    -> footer
+(6) view bus ticket page
+    -> Header
+    -> ticket page
+        -> alert, table and card from bootstrap
+    -> footer
+
+
+/**********/
+
+(1) No need for BE and DB
+(2) create a ticket booking service, providedIn: 'root'
+    -> singleton
+    -> can hold in-memory data
+    -> you can hardcode the bus information (use on search detail page)
+        -> search the buses
+    -> you can hardcode the list of cities (use on home page)
+    -> methods
+        -> get cities (home page)
+        -> filter buses (search page)
+(3) user service, providedIn: 'root'
+    -> methods
+        -> save user data (passenger information page)
+        -> save seat selection (seatNo, bus No, journey date, route, fare)
+        -> get booking details (review page, ticket page)
+(4) routing
+(5) pipes (dates, currency, time)
+(6) create common header and footer components for all the pages (See the routing session)
+
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+
+
+
+Docker link:
+https://mherman.org/blog/dockerizing-an-angular-app/
+https://hub.docker.com/
+    

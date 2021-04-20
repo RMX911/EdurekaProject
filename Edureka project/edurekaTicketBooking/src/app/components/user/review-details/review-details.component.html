@@ -1,0 +1,67 @@
+<div class="container mt-5 shadow">
+  <h4 class="text-center text-muted">Online Reservation</h4>
+  <div class="alert alert-warning mt-3 text-dark" role="alert">
+    <div class="row">
+        <div class="col-lg-6"><strong>{{tripDetails.source | titlecase}} -> {{tripDetails.destination | titlecase}} </strong></div>
+        <div class="col-lg-6"><strong>{{date | date:'dd MMMM YYYY'}}</strong></div>
+    </div>
+  </div>
+
+  <div>
+    <table class="table text-center">
+      <thead>
+          <tr>
+              <td><strong>Passenger Details</strong></td>
+              <td><strong>Ticket Id</strong></td>
+              <td><strong>Seat No</strong></td>
+              <td><strong>Total Fare</strong></td>
+          </tr>
+      </thead>
+      <tbody>
+         <tr>
+             <td>
+                 <strong>{{userDetails.name}}</strong>
+                 <br>
+                 <span class="text-muted">{{userDetails.phoneNumber}}</span>
+                 <br>
+                 <span class="text-muted">{{userDetails.email}}</span>
+             </td>
+             <td>{{ticketId}}</td>
+             <td>
+                 <span *ngFor="let seat of bookingDeatils.seatsBooked">{{seat}},  </span>
+             </td>
+             <td>
+                 {{bookingDeatils.totalFare | currency:'INR'}}
+             </td>
+         </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <table class='table mb-3 text-center'>
+      <thead>
+          <tr>
+              <td><strong>Bus Name</strong></td>
+              <td><strong>Reporting Time</strong></td>
+              <td><strong>Departure Time</strong></td>
+          </tr>
+      </thead>
+      <tbody>
+            <tr>
+                <td>
+                  {{tripDetails.busName}}
+                  <br>
+                  <span class="text-muted font-weight-light font-italic">Coach Type: {{tripDetails.coachType | titlecase}} </span>
+                </td>
+                <td class="text-wrap">30 minutes before departure. </td>
+                <td>{{tripDetails.departureTime}}</td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="text-center text-danger mb-3 mt-5">
+    ** Please bring a copy of this, to the TicketCouter to collect your Ticket!
+</div>

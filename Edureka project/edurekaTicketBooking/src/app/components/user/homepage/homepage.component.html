@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="card startForm">
+        <div class="card-header text-center">Get Your Journey Started!</div>
+        <div class="card-body">
+            <form [formGroup]="startForm" (ngSubmit)="onFormSubmit()">
+                <div class="form-row row">
+                   
+                    <div class="form-group col-lg-6">
+                        <label>Leaving From</label>
+                        <select formControlName="source" class="form-control">
+                            <option disabled [selected]="true">From: </option>
+                            <option *ngFor="let place of places">{{place}}</option>
+                        </select>
+                        <!-- <input type="text" class="form-control" formControlName="source"> -->
+                        <div *ngIf="submitted && f.source.errors && f.source.errors.required" class="text-danger">Journey source is required</div>
+                        
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Going To</label>
+                        <select formControlName="destination" class="form-control">
+                            <option disabled [selected]="true">To: </option>
+                            <option *ngFor="let place of places">{{place}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.destination.errors && f.destination.errors.required" class="text-danger">Journey destination is required</div>
+                        <div *ngIf="submitted && f.destination?.errors && f.destination.errors?.mustNotMatch" class="text-danger">To and From Cannot Be Same!</div>
+                    </div>
+                </div>
+            
+
+                <div class="form-row row">
+                    <div class="form-group col-12">
+                        <label>Select Date</label>
+                        <input type="date" class="form-control" formControlName="date">
+                        <div *ngIf="submitted && f.date.errors && f.date.errors.required" class="text-danger">Date is required</div>
+                        
+                    </div>
+                </div>
+                <br/>
+                <div class="text-center">
+                    <button class="btn btn-primary m-2" type="submit">Start Trip</button>
+                   
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
